@@ -1,0 +1,7 @@
+keytool -genkey -v -keystore chaveAppEduc.keystore -alias merotecdev -keyalg RSA -keysize 2048 -validity 10000
+
+jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 -keystore chaveAppEd.keystore build/app/outputs/bundle/release/app-release.aab merotecdev
+
+jarsigner -verify -verbose -certs build/app/outputs/bundle/release/app-release.aab
+
+keytool -printcert -jarfile build/app/outputs/bundle/release/app-release.aab
